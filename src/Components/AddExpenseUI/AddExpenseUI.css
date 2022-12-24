@@ -1,0 +1,16 @@
+.add__expense-box {
+  width: 70%;
+  margin: 30px auto;
+  padding: 30px;
+}
+.add__expense-box h2 {
+  font-size: 20px;
+  background: var(--gradient);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+.add__expense-box p {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgb(20, 20, 48);
+}
