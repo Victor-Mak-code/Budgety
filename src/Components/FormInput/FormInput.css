@@ -3,9 +3,13 @@
   font-weight: 500;
   display: block;
 }
+.form__input {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
 .form__input input {
   border: 1px solid #ccc;
-  width: 60%;
+  width: 80%;
   height: 45px;
   padding: 10px;
   border-radius: 5px;

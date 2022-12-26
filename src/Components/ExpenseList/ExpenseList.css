@@ -1,0 +1,45 @@
+.expense__list-box {
+  background-color: var(--white);
+  border: 1px solid #ccc;
+  padding: 13px;
+  border-radius: 5px;
+  transform: translateY(20px);
+  margin-bottom: 10px;
+}
+.expense_main-box {
+  display: flex;
+  align-items: center;
+}
+.expense__list-box span {
+  font-size: 14px;
+}
+.narration {
+  font-weight: 500;
+}
+.expense__amount span {
+  margin-left: 20px;
+}
+.circle__div {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(252, 195, 91, 0.945);
+  margin-right: 10px;
+  border-radius: 100px;
+}
+.inner__cirlce {
+  background: orangered;
+  width: 10px;
+  height: 10px;
+  margin: 5px auto;
+  border-radius: 100px;
+}
+.expense__date {
+  text-align: right;
+}
+.expense__date span {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 10px;
+  font-weight: 500;
+  color: rgb(131, 128, 128);
+}

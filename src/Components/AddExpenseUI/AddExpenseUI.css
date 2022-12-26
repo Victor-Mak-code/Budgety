@@ -1,21 +1,30 @@
 .add__expense-box {
-  width: 60%;
-  margin: 30px auto;
+  width: 75%;
+  margin: 60px auto;
   padding: 30px;
 }
-.form__input {
-  margin: 10px 0;
-}
+
 .add__expense-box h2 {
   font-size: 20px;
   background: var(--gradient);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+.add__expense-form {
+  width: 100%;
+}
+.expense_box {
+  width: 70%;
+}
+.exp__price {
+  font-weight: 600;
+}
 .add__expense-box p {
   font-size: 13px;
   color: rgb(20, 20, 48);
 }
-.add__expense-form {
+.expense__form-list-box {
+  display: flex;
+  justify-content: space-between;
   margin: 20px 0;
 }
