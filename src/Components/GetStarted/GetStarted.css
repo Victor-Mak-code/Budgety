@@ -1,0 +1,59 @@
+.getstarted__icon {
+  display: flex;
+  align-items: center;
+}
+.icon__coin {
+  margin-right: 10px;
+  font-size: 35px;
+  background-color: rgba(210, 189, 231, 0.788);
+  color: rgb(94, 12, 172);
+  padding: 5px;
+  border-radius: 10px;
+}
+.getstarted__main-body {
+  display: flex;
+  margin: 20px 0;
+}
+.create__budget {
+  background: var(--gradient);
+  margin-right: 20px;
+}
+.budget__btn {
+  width: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.sign__in {
+  background: rgba(210, 189, 231, 0.788);
+  color: rgb(94, 12, 172);
+}
+.budget__btn:hover {
+  transform: scale(1.1);
+}
+.sign__in span {
+  font-weight: 500;
+  font-size: 14px;
+}
+.create__budget span {
+  color: var(--white);
+  font-weight: 500;
+  font-size: 14px;
+}
+.share__budgety {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.share__icon {
+  font-size: 12px;
+  color: rgb(94, 12, 172);
+  margin-right: 5px;
+}
+.share__budgety span {
+  font-weight: 500;
+  font-size: 14px;
+}
