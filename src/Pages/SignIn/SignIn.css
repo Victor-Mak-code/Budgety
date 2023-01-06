@@ -6,6 +6,9 @@
 .form_auth__header {
   padding: 20px 30px;
 }
+.form__auth__body input {
+  width: 100%;
+}
 .logo span {
   color: var(--white);
   font-size: 20px;
@@ -14,7 +17,7 @@
 .form__auth__body {
   background-color: var(--white);
   width: 40%;
-  margin: 60px auto;
+  margin: 30px auto;
   border-radius: 5px;
   padding: 30px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -25,6 +28,7 @@
   margin-bottom: 20px;
   font-weight: 500;
 }
+
 .heading__2 {
   background: var(--gradient);
   -webkit-text-fill-color: transparent;

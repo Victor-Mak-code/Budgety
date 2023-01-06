@@ -16,13 +16,10 @@ const SignUp = () => {
         <p>Aleady have an account, Sign In </p>
         <form>
           <FormInput
-            labelValue="Budget Name"
-            placeholder="eg. Monthly Budget"
-          />
-          <FormInput
             labelValue="Email Address"
             placeholder="eg. johnsmith@gmail.com"
           />
+          <FormInput labelValue="Username" placeholder="eg. johnsmith10" />
           <FormInput labelValue="Password" placeholder="**********" />
           <Button btnValue="Sign Up" btnClass="btn btn-primary" />
         </form>

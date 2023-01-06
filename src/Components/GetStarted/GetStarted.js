@@ -1,8 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "./GetStarted.css";
 import { FaCoins, FaShareAlt } from "react-icons/fa";
 
 const GetStarted = () => {
+  const navigate = useNavigate();
+
+  const goToSignInHandler = () => {
+    navigate("/signin");
+  };
+  const goToSignUpHandler = () => {
+    navigate("/signup");
+  };
+
   return (
     <div className="getstarted__main">
       <div className="getstarted__box">
@@ -14,11 +24,11 @@ const GetStarted = () => {
       </div>
 
       <div className="getstarted__main-body">
-        <div className="budget__btn create__budget">
+        <div className="budget__btn create__budget" onClick={goToSignUpHandler}>
           <span>Don't Have a Budget, Sign up</span>
         </div>
 
-        <div className="budget__btn sign__in">
+        <div className="budget__btn sign__in" onClick={goToSignInHandler}>
           <span>Already Have a Budget, Sign in</span>
         </div>
       </div>
