@@ -8,9 +8,12 @@ import FormInput from "../../Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 import Error from "../../Components/Error/Error";
 import { errorActions } from "../../Store/Error-Slice";
+import Preloader from "../../Components/Preloader/Preloader";
+import { preloaderActions } from "../../Store/Preloader-Slice";
 
 const SignUp = () => {
   const showError = useSelector((state) => state.error.showError);
+  const showLoader = useSelector((state) => state.preloader.showLoader);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -43,6 +46,7 @@ const SignUp = () => {
 
   //Authenticate and Post New User to Firebase
   const signUpHandler = async (email, password, fullName) => {
+    dispatch(preloaderActions.setShowLoader(true));
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -59,10 +63,13 @@ const SignUp = () => {
       .catch((error) => {
         const errorMessage = error.code;
         if (errorMessage === "auth/email-already-in-use") {
+          dispatch(preloaderActions.setShowLoader(false));
           errorHandler(true, "User Already Exists");
         } else if (errorMessage === "auth/invalid-email") {
+          dispatch(preloaderActions.setShowLoader(false));
           errorHandler(true, "invalid Email Address");
         } else {
+          dispatch(preloaderActions.setShowLoader(false));
           errorHandler(false, "");
         }
       });
@@ -81,6 +88,8 @@ const SignUp = () => {
 
   return (
     <div className="form__auth">
+      {showLoader ? <Preloader /> : null}
+
       <div className="form_auth__header">
         <div className="logo">
           <span>Budgety.</span>
