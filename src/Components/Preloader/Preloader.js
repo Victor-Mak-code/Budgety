@@ -4,7 +4,7 @@ import "./Preloader.css";
 const Preloader = () => {
   return (
     <div className="preloader-box">
-      <div class="loader">Loading...</div>
+      <div className="loader">Loading...</div>
     </div>
   );
 };
