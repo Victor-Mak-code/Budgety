@@ -10,9 +10,10 @@
 .form__input input {
   border: 1px solid #ccc;
   width: 80%;
-  height: 45px;
+  height: 40px;
   padding: 10px;
   border-radius: 5px;
+  font-weight: 600;
 }
 .form__input input:focus {
   border: none;

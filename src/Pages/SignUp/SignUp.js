@@ -1,8 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { collection, addDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase";
 import FormInput from "../../Components/FormInput/FormInput";
 import Button from "../../Components/Button/Button";
 import Error from "../../Components/Error/Error";
@@ -11,6 +12,7 @@ import { errorActions } from "../../Store/Error-Slice";
 const SignUp = () => {
   const showError = useSelector((state) => state.error.showError);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //Show Error Handler
   const errorHandler = (showerror, errmsg) => {
@@ -19,8 +21,10 @@ const SignUp = () => {
   };
 
   //Validate Email and Password is not Empty
-  const validateEmailPass = (email, pass) => {
-    if (email === "") {
+  const validateEmailPass = (email, pass, fullName) => {
+    if (fullName === "") {
+      errorHandler(true, "Full name is Required");
+    } else if (email === "") {
       errorHandler(true, "Email is Required");
     } else if (pass === "") {
       errorHandler(true, "Password is Required");
@@ -30,12 +34,27 @@ const SignUp = () => {
     }
   };
 
+  // Add user To Database collection
+  const addUserToDatabaseCollection = async (userObj) => {
+    await addDoc(collection(db, "users"), userObj).then(() => {
+      navigate("/");
+    });
+  };
+
   //Authenticate and Post New User to Firebase
-  const signUpHandler = async (email, password) => {
+  const signUpHandler = async (email, password, fullName) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        const userData = {
+          id: user.uid,
+          fullName,
+          email: user.email,
+          expenses: [],
+          budgetName: "",
+          budgetAmount: 0,
+        };
+        addUserToDatabaseCollection(userData);
       })
       .catch((error) => {
         const errorMessage = error.code;
@@ -54,8 +73,9 @@ const SignUp = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    if (validateEmailPass(email, password)) {
-      signUpHandler(email, password);
+    const fullName = e.target.fullname.value;
+    if (validateEmailPass(email, password, fullName)) {
+      signUpHandler(email, password, fullName);
     }
   };
 
@@ -74,14 +94,21 @@ const SignUp = () => {
           {showError ? <Error /> : null}
 
           <FormInput
+            labelValue="Full Name"
+            placeholder="eg. John Smith"
+            name="fullname"
+          />
+          <FormInput
             labelValue="Email Address"
             placeholder="eg. johnsmith@gmail.com"
             name="email"
           />
+
           <FormInput
             labelValue="Password"
             placeholder="**********"
             name="password"
+            type="password"
           />
           <Button btnValue="Sign Up" btnClass="btn btn-primary" />
         </form>
